@@ -21,38 +21,38 @@ cd fn_discount_campaign
 ls -la
 ```
 
-![](./images/fn-discount-campaign/faas-create-function01.PNG)
+![](./images/faas-create-function01.PNG)
 
 The serverless function should be created at ```src/main/java/com/example/fn/HelloFunction.java``` and you can review the example code with and your IDE or text editor. This file will be change in the next section.
 
-![](./images/fn-discount-campaign/faas-create-function02.PNG)
+![](./images/faas-create-function02.PNG)
 
 A Junit textfile should be created at ```src/test/java/com/example/fn/HelloFunctionTest.java``` and used to test the serverless function before deploy it in OCI FaaS. We won't use Junit testing in this lab, but you could add some testing Junit file to your serverles function if you want.
 
-![](./images/fn-discount-campaign/faas-create-function03.PNG)
+![](./images/faas-create-function03.PNG)
 
 ## fn discount campaign IDE preparation
 You could deploy this new serverless function in your FaaS environment, but the idea is to change the example code by the real function code. You can use a text editor or you favourite IDE software. In this lab we used Visual Studio Code (from the developer machine imagen in OCI marketplace), so all images was captured with that IDE, but you can use what you want.
 
 Open Visual Studio Code (Applications -> Accessories in the development VM) or your favourite IDE 
 
-![](./images/fn-discount-campaign/faas-create-function07.PNG)
+![](./images/faas-create-function07.PNG)
 
 Select **add workspace folder ...** in the Start Menu.
 
-![](./images/fn-discount-campaign/faas-create-function08.PNG)
+![](./images/faas-create-function08.PNG)
 
 Click in HOME directory and next select the appropiate path to your function project directory [opc/holserverless/fn_discount_campaign]. Then click Add button to create a workspace from this directory in Visual Studio Core.
 
-![](./images/fn-discount-campaign/faas-create-function04.PNG)
+![](./images/faas-create-function04.PNG)
 
 A new project will be available as workspace in the IDE
 
-![](./images/fn-discount-campaign/faas-create-function05.PNG)
+![](./images/faas-create-function05.PNG)
 
 You can click in **HelloFunction.java** to review your serverless function code. Same for **HelloFunctionTest.java** file.
 
-![](./images/fn-discount-campaign/faas-create-function06.PNG)
+![](./images/faas-create-function06.PNG)
 
 ### fn discount campaign java code
 The function code is in the next github [repository](https://github.com/oraclespainpresales/fn_pizza_discount_campaign). You can open it in other web brower tab (```CRTL + mouse click```, to review the project.
@@ -66,15 +66,15 @@ You can copy the java function code creating a new file with the function name, 
 #### Creating new file
 Create new file in ```/src/main/java/com/example/fn``` directory. Right mouse button and then New File.
 
-![](./images/fn-discount-campaign/faas-create-function07.PNG)
+![](./images/faas-create-function07.PNG)
 
 Then set the same name as java class **[GetDiscount.java]**
 
-![](./images/fn-discount-campaign/faas-create-function08.PNG)
+![](./images/faas-create-function08.PNG)
 
 Now copy raw function code and paste it from the [java function code](https://raw.githubusercontent.com/oraclespainpresales/fn_pizza_discount_campaign/master/src/main/java/com/example/fn/GetDiscount.java).
 
-![](./images/fn-discount-campaign/faas-create-function09.PNG)
+![](./images/faas-create-function09.PNG)
 
 Delete HelloFunction.java and HelloFunctionTest.java from your IDE project.
 
@@ -83,23 +83,23 @@ You can overwrite the HelloFunction.java code with the GetDiscount Function code
 
 Select the raw [java function code](https://raw.githubusercontent.com/oraclespainpresales/fn_pizza_discount_campaign/master/src/main/java/com/example/fn/GetDiscount.java) from the repository and paste it overwriting the HelloFunction.java Function.
 
-![](./images/fn-discount-campaign/faas-create-function10.PNG)
+![](./images/faas-create-function10.PNG)
 
 Click right mouse button in the HelloFunction.java file to Rename the file. You can press F2 key to rename the HelloFunction.java file as a shortcut.
 
-![](./images/fn-discount-campaign/faas-create-function11.PNG)
+![](./images/faas-create-function11.PNG)
 
 Change the name of the java file to **[GetDiscount.java]**.
 
-![](./images/fn-discount-campaign/faas-create-function12.PNG)
+![](./images/faas-create-function12.PNG)
 
 You can delete the HelloFunctionTest.java file (and the test directory tree) or rename it and change the code to create your JUnit tests. In this lab we won't create JUnit test.
 
-![](./images/fn-discount-campaign/faas-create-function13.PNG)
+![](./images/faas-create-function13.PNG)
 
 You should have the java function code, the func.yaml and pom.xml files in your project directory right now.
 
-![](./images/fn-discount-campaign/faas-create-function14.PNG)
+![](./images/faas-create-function14.PNG)
 
 ## Changing func.yaml file
 You have to delete several files in the func.yaml code to create your custom Docker multi stage file. In you IDE select func.yaml file and delete next lines:
@@ -110,7 +110,7 @@ build_image: fnproject/fn-java-fdk-build:jdk11-1.0.105
 run_image: fnproject/fn-java-fdk:jre11-1.0.105
 cmd: com.example.fn.HelloFunction::handleRequest
 ```
-![](./images/fn-discount-campaign/faas-create-function15.PNG)
+![](./images/faas-create-function15.PNG)
 
 ## Overwriting pom.xml file
 Next you must overwrite the example maven pom.xml file with the [pom.xml](https://raw.githubusercontent.com/oraclespainpresales/fn_pizza_discount_campaign/master/pom.xml) content of the github function project. Maven is used to import all the dependencies and java classes needed to create your serverless function jar. 
@@ -144,22 +144,22 @@ Next JDBC and DB access dependencies will be included and configured in the mave
 </dependency>
 ```
 
-![](./images/fn-discount-campaign/faas-create-function16.PNG)
+![](./images/faas-create-function16.PNG)
 
 Then click in File -> Save All in your IDE to save the changes.
 
-![](./images/fn-discount-campaign/faas-create-function17.PNG)
+![](./images/faas-create-function17.PNG)
 
 ## Creating Multi Stage Dockerfile
 You must create a new multi stage docker file, to deploy your serverless function as a docker image in your OCIR repository. This file must be created before deploying the function.
 
 Select fn_discount_cloud_events folder in your IDE and create new file with [Dockerfile] name clicking right mouse button
 
-![](./images/fn-discount-campaign/faas-create-function18.PNG)
+![](./images/faas-create-function18.PNG)
 
 Next copy from raw [Docker file code](https://raw.githubusercontent.com/oraclespainpresales/fn_pizza_discount_campaign/master/Dockerfile) to your new local Dockerfile file.
 
-![](./images/fn-discount-campaign/faas-create-function19.PNG)
+![](./images/faas-create-function19.PNG)
 
 As you read in the last **pom.xml** section, you have to include and configure the JDBC driver classes in the maven project in the dockerfile, you could read more about that in the recap section.
 ```dockerfile
@@ -183,47 +183,47 @@ To download the JDBC 18.3.0.0 drivers follow next steps:
 1. Create a new **[libs]** directory in your IDE project. 
    - Right click in your project main directory **[fn_discount_campaign]** and click New Folder.
 
-![](./images/fn-discount-campaign/faas-create-function-jdbc-classes01.PNG)
+![](./images/faas-create-function-jdbc-classes01.PNG)
 
    - Write **libs** as directory name and press enter to create it.
    
-![](./images/fn-discount-campaign/faas-create-function-jdbc-classes02.PNG)
+![](./images/faas-create-function-jdbc-classes02.PNG)
 
 2. Download to your development machine next lib files from the github [fn_pizza_discount_campaing repository](https://github.com/oraclespainpresales/fn_pizza_discount_campaign/tree/master/libs).
    - Open a terminal with the **lib** directory selected. Right mouse click Open in Terminal...the main window of the IDE will split an a terminal will be enabled in your lib directory.
    
-![](./images/fn-discount-campaign/faas-create-function-jdbc-classes03.PNG)
+![](./images/faas-create-function-jdbc-classes03.PNG)
 
    - You can use now **wget** to download the libraries to libs directory.
 
 ```sh
 wget "https://github.com/oraclespainpresales/fn_pizza_discount_campaign/raw/master/libs/ojdbc8.jar"
 ```
-![](./images/fn-discount-campaign/faas-create-function-jdbc-classes04.PNG)
+![](./images/faas-create-function-jdbc-classes04.PNG)
 ```sh
 wget "https://github.com/oraclespainpresales/fn_pizza_discount_campaign/raw/master/libs/oraclepki.jar"
 ```
-![](./images/fn-discount-campaign/faas-create-function-jdbc-classes05.PNG)
+![](./images/faas-create-function-jdbc-classes05.PNG)
 ```sh
 wget "https://github.com/oraclespainpresales/fn_pizza_discount_campaign/raw/master/libs/osdt_cert.jar"
 ```
-![](./images/fn-discount-campaign/faas-create-function-jdbc-classes06.PNG)
+![](./images/faas-create-function-jdbc-classes06.PNG)
 ```sh
 wget "https://github.com/oraclespainpresales/fn_pizza_discount_campaign/raw/master/libs/osdt_core.jar"
 ```
-![](./images/fn-discount-campaign/faas-create-function-jdbc-classes07.PNG)
+![](./images/faas-create-function-jdbc-classes07.PNG)
 ```sh
 wget "https://github.com/oraclespainpresales/fn_pizza_discount_campaign/raw/master/libs/ucp.jar"
 ```
-![](./images/fn-discount-campaign/faas-create-function-jdbc-classes08.PNG)
+![](./images/faas-create-function-jdbc-classes08.PNG)
 
 You could download them from the [oracle database web page](https://www.oracle.com/database/technologies/appdev/jdbc-ucp-183-downloads.html) to your development machine. Then copy them to your **libs** directory.
 
-![](./images/fn-discount-campaign/faas-create-function-jdbc-classes09.PNG)
+![](./images/faas-create-function-jdbc-classes09.PNG)
 
 Also you could use [maven repository web](https://mvnrepository.com/artifact/com.oracle.database.jdbc?sort=newest) look for your apropiate maven repo or library and import to your **pom.xml** project copying from the **maven tab**. Next you could download the lib file from **Files** clicking in **jar**.
 
-![](./images/fn-discount-campaign/faas-create-function-jdbc-classes10.PNG)
+![](./images/faas-create-function-jdbc-classes10.PNG)
 
 ### dbwallet.zip file
 You have to include dbwallet.zip file in your IDE project. You have several methods to do that.
@@ -233,11 +233,11 @@ You have to include dbwallet.zip file in your IDE project. You have several meth
    
    - Mobaxterm create a **SFTP connection** for you and then you can upload the **dbwallet.zip** file to your **lib** directory.
    
-   ![](./images/fn-discount-campaign/faas-create-function-dbwallet01.PNG)
+   ![](./images/faas-create-function-dbwallet01.PNG)
    
    - Select your dbwallet.zip or drag & drop in your fn_discount_campaign directory to copy dbwallet.zip file.
    
-   ![](./images/fn-discount-campaign/faas-create-function-dbwallet02.PNG)
+   ![](./images/faas-create-function-dbwallet02.PNG)
    
 2. If you didn't downloaded before, you can generate it going to ATP OCI menu and download and import it now as is described in [ATP section](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/gigis-serverless-HOL.md#get-atp-wallet-file).
 
@@ -249,7 +249,7 @@ cd $HOME/holserverless/fn_discount_campaign
 oci db autonomous-data-warehouse generate-wallet --autonomous-data-warehouse-id <your_ATP_OCID_value> --password WalletPassw0rd --file dbwallet.zip
 ```
 
-![](./images/fn-discount-campaign/faas-create-function-dbwallet03.PNG)
+![](./images/faas-create-function-dbwallet03.PNG)
 
 ## Deploy fn discount campaign function
 To deploy your serverless function please follow next steps, your function will be created in OCI Functions inside your serverles app [gigis-serverless-hol]. 
@@ -262,26 +262,26 @@ Then you must login in OCIR registry with ```docker login``` command. Introduce 
 ```sh
 docker login fra.ocir.io
 ```
-![](./images/fn-discount-campaign/faas-create-function20.PNG)
+![](./images/faas-create-function20.PNG)
 
 You must execute next command with ```--verbose``` option to get all the information about the deploy process.
 ```sh
 fn --verbose deploy --app gigis-serverless-hol
 ```
 
-![](./images/fn-discount-campaign/faas-create-function21.PNG)
+![](./images/faas-create-function21.PNG)
 
 Wait to maven project download dependencies and build jar, docker image creation and function deploy in OCI serverless app finish.
 
-![](./images/fn-discount-campaign/faas-create-function22.PNG)
+![](./images/faas-create-function22.PNG)
 
 Check that your new function is created in your serverless app [gigis-serverless-hol] at Developer Services -> Functions menu.
 
-![](./images/fn-discount-campaign/faas-create-function23.PNG)
+![](./images/faas-create-function23.PNG)
 
 You must change your Fucntion time-out and memory. Click in Edit Function button and then change **TIMEOUT** from [30] to [120] seconds and change **MEMORY** from [128] to [512] or [1024] MB. Then Click Save Changes Button.
 
-![](./images/fn-discount-campaign/faas-create-function24.PNG)
+![](./images/faas-create-function24.PNG)
 
 Now you can continue with the [execution of the serverless application](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/gigis-serverless-HOL.md#event-service---cloud-event-creation) or optionally review the code to know more about this serverless function.
 

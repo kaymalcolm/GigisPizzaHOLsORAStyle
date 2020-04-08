@@ -21,38 +21,38 @@ cd fn_discount_cloud_events
 ls -la
 ```
 
-![](./images/fn-discount-cloud-events/faas-create-function04.PNG)
+![](./images/faas-create-function04.PNG)
 
 The serverless function should be created at ```src/main/java/com/example/fn/HelloFunction.java``` and you can review the example code with and your IDE or text editor. This file will be change in the next section.
 
-![](./images/fn-discount-cloud-events/faas-create-function05.PNG)
+![](./images/faas-create-function05.PNG)
 
 A Junit textfile should be created at ```src/test/java/com/example/fn/HelloFunctionTest.java``` and used to test the serverless function before deploy it in OCI FaaS. We won't use Junit testing in this lab, but you could add some testing Junit file to your serverles function if you want.
 
-![](./images/fn-discount-cloud-events/faas-create-function06.PNG)
+![](./images/faas-create-function06.PNG)
 
 ## fn discount cloud-events IDE preparation
 You could deploy this new serverless function in your FaaS environment, but the idea is to change the example code by the real function code. You can use a text editor or you favourite IDE software. In this lab we used Visual Studio Code (from the developer machine imagen in OCI marketplace), so all images was captured with that IDE, but you can use what you want.
 
 Open Visual Studio Core (Applications -> Accessories in the development VM) or your favourite IDE 
 
-![](./images/fn-discount-cloud-events/faas-create-function07.PNG)
+![](./images/faas-create-function07.PNG)
 
 Select **add workspace folder ...** in the Start Menu.
 
-![](./images/fn-discount-cloud-events/faas-create-function08.PNG)
+![](./images/faas-create-function08.PNG)
 
 Click in HOME directory and next select the appropiate path to your function project directory [opc/holserverless/fn_discount_cloud_events]. Then click Add button to create a workspace from this directory in Visual Studio Core.
 
-![](./images/fn-discount-cloud-events/faas-create-function09.PNG)
+![](./images/faas-create-function09.PNG)
 
 A new project will be available as workspace in the IDE
 
-![](./images/fn-discount-cloud-events/faas-create-function10.PNG)
+![](./images/faas-create-function10.PNG)
 
 You can click n HelloFunction.java to review your serverless function code. Same for HelloFunctionTest.java file.
 
-![](./images/fn-discount-cloud-events/faas-create-function11.PNG)
+![](./images/faas-create-function11.PNG)
 
 ## fn discount cloud-events java code
 The function code is in the next github [repository](https://github.com/oraclespainpresales/fn-pizza-discount-cloud-events). You can open it in other web brower tab, to review the project.
@@ -66,15 +66,15 @@ You can copy the java function code creating a new file with the function name, 
 ### Creating new file
 Create new file in ```/src/main/java/com/example/fn``` directory. Right mouse button and then New File.
 
-![](./images/fn-discount-cloud-events/faas-create-function12.PNG)
+![](./images/faas-create-function12.PNG)
 
 Then set the same name as java class **[DiscountCampaignUploader.java]**
 
-![](./images/fn-discount-cloud-events/faas-create-function13.PNG)
+![](./images/faas-create-function13.PNG)
 
 Now copy raw function code and paste it from the [java function code](https://raw.githubusercontent.com/oraclespainpresales/fn-pizza-discount-cloud-events/master/src/main/java/com/example/fn/DiscountCampaignUploader.java).
 
-![](./images/fn-discount-cloud-events/faas-create-function14.PNG)
+![](./images/faas-create-function14.PNG)
 
 Delete HelloFunction.java and HelloFunctionTest.java from your IDE project.
 
@@ -83,19 +83,19 @@ You can overwrite the HelloFunction.java code with the DiscountCampaignUploader 
 
 Select the raw [java function code](https://raw.githubusercontent.com/oraclespainpresales/fn-pizza-discount-cloud-events/master/src/main/java/com/example/fn/DiscountCampaignUploader.java) from the repository and paste it overwriting the HelloFunction.java Function.
 
-![](./images/fn-discount-cloud-events/faas-create-function15.PNG)
+![](./images/faas-create-function15.PNG)
 
 Click right mouse button in the HelloFunction.java file to Rename the file. You can press F2 key to rename the HelloFunction.java file as a shortcut.
 
-![](./images/fn-discount-cloud-events/faas-create-function16.PNG)
+![](./images/faas-create-function16.PNG)
 
 Change the name of the java file to **[DiscountCampaignUploader.java]**.
 
-![](./images/fn-discount-cloud-events/faas-create-function17.PNG)
+![](./images/faas-create-function17.PNG)
 
 You can delete the HelloFunctionTest.java file (and the test directory tree) or rename it and change the code to create your JUnit tests. In this lab we won't create JUnit test.
 
-![](./images/fn-discount-cloud-events/faas-create-function18.PNG)
+![](./images/faas-create-function18.PNG)
 
 ## Changing func.yaml file
 You have to delete several files in the func.yaml code to create your custom Docker multi stage file. In you IDE select func.yaml file and delete next lines:
@@ -107,12 +107,12 @@ run_image: fnproject/fn-java-fdk:jre11-1.0.105
 cmd: com.example.fn.HelloFunction::handleRequest
 ```
 
-![](./images/fn-discount-cloud-events/faas-create-function19.PNG)
+![](./images/faas-create-function19.PNG)
 
 ## Overwriting pom.xml file
 Next you must overwrite the example maven pom.xml file with the [pom.xml](https://raw.githubusercontent.com/oraclespainpresales/fn-pizza-discount-cloud-events/master/pom.xml) content of the github function project. Maven is used to import all the dependencies and java classes needed to create your serverless function jar.
 
-![](./images/fn-discount-cloud-events/faas-create-function20.PNG)
+![](./images/faas-create-function20.PNG)
 
 ## Creating OCI config and oci_api_key.pem files
 For security reasons this two files haven't been uploaded to github and also depends on your oci tenancy and project information. This two files are easy to generate from a Developer Cloud Service pipeline that is explained in the [optional part of this HOL](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/devcs2fn.md). You will can review it if you complete the optional part.
@@ -123,7 +123,7 @@ You must create a new directory in your IDE project called **[oci-config]**, thi
 - Right mouse button and New Folder.
 - Write **oci-config** as directory name and press enter key.
 
-![](./images/fn-discount-cloud-events/faas-create-function20a.PNG)
+![](./images/faas-create-function20a.PNG)
 
 Next create **config** file:
 - Select in oci-config directory and Click right mouse button New File.
@@ -139,14 +139,14 @@ fingerprint=<your_api_key_fingerprint_like_15:1b:90:9e:45:7c:b9:bf:73:f5:e2:0f:8
 key_file=<image_path_to_your_pem_file_like_/.oci/oci_api_key.pem>
 ```
 
-![](./images/fn-discount-cloud-events/faas-create-function20b.PNG)
+![](./images/faas-create-function20b.PNG)
 
 Next create **oci_api_key.pem** file:
 - Select in oci-config directory and Click right mouse button New File.
 - Write oci_api_key.pem name and press enter key.
 - Write your private key in oci_api_key.pem
 
-![](./images/fn-discount-cloud-events/faas-create-function20c.PNG)
+![](./images/faas-create-function20c.PNG)
 
 To finish this section, please Select File -> Save All in your IDE to save all the changes.
 
@@ -155,11 +155,11 @@ You must create a new multi stage docker file, to deploy your serverless functio
 
 Select fn_discount_cloud_events folder in your IDE and create new file with [Dockerfile] name clicking right mouse button
 
-![](./images/fn-discount-cloud-events/faas-create-function21.PNG)
+![](./images/faas-create-function21.PNG)
 
 Next copy from raw [Docker file code](https://raw.githubusercontent.com/oraclespainpresales/fn-pizza-discount-cloud-events/master/Dockerfile) to your new local Dockerfile file.
 
-![](./images/fn-discount-cloud-events/faas-create-function22.PNG)
+![](./images/faas-create-function22.PNG)
 
 Then review the code of the dockerfile file and comment next lines putting # before the sentences. This lines is for the optional part of the demo that takes the oci **config** and **oci_api_key.pem** files from a pipeline build machine that is in developer cloud service. In that machines, the oci config file **key_file** var, point to /home/builder/.oci/oci_api_key.pem path for the api private key file, but you will can know more about that, if you complete the optional part of the HOL.
 Comment:
@@ -190,7 +190,7 @@ As
 COPY /oci-config/config /.oci/config
 COPY /oci-config/oci_api_key.pem /.oci/oci_api_key.pem
 ```
-![](./images/fn-discount-cloud-events/faas-create-function23.PNG)
+![](./images/faas-create-function23.PNG)
 
 After that, click in File -> Save All in your IDE to save all changes.
 
@@ -205,29 +205,29 @@ Then you must login in OCIR registry with ```docker login``` command. Introduce 
 ```sh
 docker login fra.ocir.io
 ```
-![](./images/fn-discount-cloud-events/faas-create-function24.PNG)
+![](./images/faas-create-function24.PNG)
 
 You must execute next command with ```--verbose``` option to get all the information about the deploy process.
 ```sh
 fn --verbose deploy --app gigis-serverless-hol
 ```
 
-![](./images/fn-discount-cloud-events/faas-create-function25.PNG)
+![](./images/faas-create-function25.PNG)
 
 Wait to maven project download dependencies and build jar, docker image creation and function deploy in OCI serverless app finish.
 
-![](./images/fn-discount-cloud-events/faas-create-function26.PNG)
+![](./images/faas-create-function26.PNG)
 
 Check that your new function is created in your serverless app [gigis-serverless-hol] at Developer Services -> Functions menu.
 
-![](./images/fn-discount-cloud-events/faas-create-function27.PNG)
+![](./images/faas-create-function27.PNG)
 
 ## New Environment Variables
 after you have created and deployed fn_discount_upload and fn_discount_cloud_events, you have to create 3 additional environment variables in fn_discount_cloud_events that will link both functions.
 
 Click in [fn_discount_cloud_events] function and next **Configuration** menu.
 
-![](./images/fn-discount-cloud-events/faas-create-function28.PNG)
+![](./images/faas-create-function28.PNG)
 
 Create 3 additional variables:
 || Key | Value | Section |
@@ -236,11 +236,11 @@ Create 3 additional variables:
 |02|UPLOAD_FUNCTION_ID|ocid1.fnfunc.oc1.eu-frankfurt-1.aaaaaaaaack6vdtmj7n2w...|OCID of **fn_discount_upload**|
 |03|OBJECT_STORAGE_URL_BASE|```https://objectstorage.<YOUR_OCI_REGION>.oraclecloud.com/```|[Regions](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/regions.htm)|
 
-![](./images/fn-discount-cloud-events/faas-create-function29.PNG)
+![](./images/faas-create-function29.PNG)
 
 You must change your Fucntion time-out. Click in Edit Function button and then change **TIMEOUT** from [30] to [120] seconds. Then Click Save Changes Button.
 
-![](./images/fn-discount-cloud-events/faas-create-function30.PNG)
+![](./images/faas-create-function30.PNG)
 
 ## Code recap (OPTIONAL)
 You copy the function code and made several changes in the configuration files like func.yaml and pom.xml then you created a new Dockerfile to deploy the function. Now we'll explain you such changes:

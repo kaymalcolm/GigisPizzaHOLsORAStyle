@@ -356,7 +356,7 @@ Now you can write and execute SQL commands in Worksheet tab. Click on Green Play
 ### ATP Schema and Tables Creation
 Now you can create schemas and tables in the ATP. First you have to create a new schema and next you will can create the discount campaign table.
 
-To create the new schema called MICROSERVICE (or other descriptive name) you must copy this SQL sentences in the Worksheet of SQL Developer webapp.
+To create the new schema called **MICROSERVICE** (or other descriptive name) you must copy this SQL sentences in the Worksheet of SQL Developer webapp.
 
 ```sql
 -- USER SQL
@@ -421,7 +421,7 @@ BEGIN
     COMMIT;
 END;
 ```
-Sign out SQL Developer web as ADMIN user and Sign in again as MICROSERVICE user. To do that you must change the HTML  SQL Developer web URL from admin to <schema_name> [**atp**]:
+Sign out SQL Developer web as ADMIN user and Sign in again as MICROSERVICE user. To do that you must change the HTML  SQL Developer web URL from **admin** to <schema_name> **atp**:
 From
 ```html
 https://<your-ATP-Instance>.adb.<your_region>.oraclecloudapps.com/ords/admin/_sdw/?nav=worksheet 
@@ -569,22 +569,22 @@ Click Configuration menu to configure your serverless app environment variables.
 ![](./images/oci-faas-create06.PNG)
 
 ### Function Environment Variables
-You must create all next environment variables to setup your serverless application, before functions creation. When you create the serverless functions, they will can access your ATP Database with both ORDS or JDBC methods.
+You must create all next environment variables to setup your serverless application, before functions creation. When you create the serverless functions, they will can access your ATP Database with both ORDS or JDBC methods. **Bold** values would be changed by your own values.
 
 || Key | Value | Section |
 | ------------- | ------------- | ------------- | ------------- |
 |01| CLIENT_CREDENTIALS|/function/wallet|N/A|
-|02| DB_ORDS_BASE|https://[ixcsyvrmtjm8ebr-ggdiscountatp].adb.eu-frankfurt-1.oraclecloudapps.com/ords/|[<span class="underline">from ORDS URL Section</span>](#atp-ords-url)|
-|03| DB_ORDS_CLIENT_ID|[DWxb8cNpjGJaJ415GN8Lqg..]|[<span class="underline">from ORDS Section</span>](#atp-ords-configuration)|
-|04| DB_ORDS_CLIENT_SECRET|[5VHamjpqAcTncEyIVOTdTA..]|[<span class="underline">from ORDS Section</span>](#atp-ords-configuration)|
+|02| DB_ORDS_BASE|https://**ixcsyvrmtjm8ebr-ggdiscountatp**.adb.**eu-frankfurt-1**.oraclecloudapps.com/ords/|[<span class="underline">from ORDS URL Section</span>](#atp-ords-url)|
+|03| DB_ORDS_CLIENT_ID|**DWxb8cNpjGJaJ415GN8Lqg..**|[<span class="underline">from ORDS Section</span>](#atp-ords-configuration)|
+|04| DB_ORDS_CLIENT_SECRET|**5VHamjpqAcTncEyIVOTdTA..**|[<span class="underline">from ORDS Section</span>](#atp-ords-configuration)|
 |05| DB_ORDS_SERVICE|atp/campaign|[<span class="underline">from ORDS Section</span>](#atp-enable-ords-table)|
 |06| DB_ORDS_SERVICE_OAUTH|atp/oauth/token|[from ATP ORDS documentation](https://oracle-base.com/articles/misc/oracle-rest-data-services-ords-authentication)|
-|07| DB_USER|MICROSERVICE|[from SQL USER creation](#atp-schema-and-tables-creation)|
-|08| DB_PASSWORD|AAZZ__welcomedevops123|[from SQL USER creation](#atp-schema-and-tables-creation)|
+|07| DB_USER|**MICROSERVICE**|[from SQL USER creation](#atp-schema-and-tables-creation)|
+|08| DB_PASSWORD|**AAZZ__welcomedevops123**|[from SQL USER creation](#atp-schema-and-tables-creation)|
 |09| DB_URL|jdbc:oracle:thin:@|[from Java and JDBC documentation](https://docs.oracle.com/cd/B28359_01/java.111/b31224/jdbcthin.htm)|
-|10| DB_SERVICE_NAME|ggdiscountatp_MEDIUM|[<span class="underline">from Get ATP Wallet file Section</span>](#get-atp-wallet-file)|
-|11| KEYSTORE_PASSWORD |[WalletPassw0rd]|[<span class="underline">from Wallet Section</span>](#get-atp-wallet-file)|
-|12| TRUSTSTORE_PASSWORD |[WalletPassw0rd]|[<span class="underline">from Wallet Section</span>](#get-atp-wallet-file)|
+|10| DB_SERVICE_NAME|**ggdiscountatp_MEDIUM**|[<span class="underline">from Get ATP Wallet file Section</span>](#get-atp-wallet-file)|
+|11| KEYSTORE_PASSWORD |**WalletPassw0rd**|[<span class="underline">from Wallet Section</span>](#get-atp-wallet-file)|
+|12| TRUSTSTORE_PASSWORD |**WalletPassw0rd**|[<span class="underline">from Wallet Section</span>](#get-atp-wallet-file)|
 
 ### Functions Logging
 If you want to create a function logging to trace your code, you have several methods: create log in an OCI object storage bucket, use a remote syslog server or use the OCI logging service.
@@ -749,7 +749,7 @@ Optional:
 fn init --runtime java fn_discount_campaign_pool
 ```
 
-Then you must modify each function with the appropiate code (you can ```CTRL + mouse click``` over the links to open new tabs browser):
+Then you must modify each function with the appropiate code (you can ```CTRL + mouse click``` over the links to open new browser tabs):
 
 1. [fn_discount_upload](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/serverless/fn_pizza_discount_upload.md)
 2. [fn_discount_cloud_events](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/serverless/fn_pizza_discount_cloud_events.md)

@@ -22,6 +22,8 @@ This serverless Hands On Lab includes:
 
 # In this Hands on Lab
 
+All HOL was written in English and all the screenshots are in English Language. We recomend you that select English as your default language in Oracle Cloud. Select the Earth Icon at the top right (near your profile icon) and change the language to English.
+
 In this HOL you will create a serverless app for discount campaigns. 
 You will:
 
@@ -68,6 +70,7 @@ If you attend our previous HOL about Gigi's pizza, you had created a Cloud Accou
 3. [How to get OCI tenancy config data](#how-to-get-oci-tenancy-config-data)
 4. [Create OCI Resources](#create-oci-resources)
    - 4.1.[VCN - Virtual Cloud Network Creation](#vcn---virtual-cloud-network-creation)
+	 - 4.1.1 [Create Developer Machine](#virtual-developer-cloud-machine)
    - 4.2 [Object Storage Creation](#object-storage-creation)
    - 4.3 [ATP - Autonomous Database Creation](#atp---autonomous-database-creation)
 	 - 4.3.1. [Get ATP Wallet file](#get-atp-wallet-file)
@@ -75,7 +78,7 @@ If you attend our previous HOL about Gigi's pizza, you had created a Cloud Accou
 	 - 4.3.3. [ATP Schema and Tables Creation](#atp-schema-and-tables-creation)
 	 - 4.3.4. [ATP ORDS Configuration](#atp-ords-configuration)
 	 - 4.3.5. [ATP Enable ORDS Table](#atp-enable-ords-table)
-   - 4.4. [OCI IAM FaaS Policy](#vcn---virtual-cloud-network-creation)
+   - 4.4. [OCI IAM FaaS Policy](#oci-iam-faas-policy)
    - 4.5. [Oracle FaaS Serverless Application Creation](#oracle-faas-serverless-application-creation)
 	  - 4.5.1. [Function Environment Variables](#function-environment-variables)
 	  - 4.5.2. [Functions Logging](#functions-logging)
@@ -85,8 +88,6 @@ If you attend our previous HOL about Gigi's pizza, you had created a Cloud Accou
 	  - 5.1.2. [Create Fn Serverless Functions](#create-fn-serverless-functions)
 6. [Event Service - Cloud Event Creation](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/serverless/event-service.md)
 7. [Execute Serverless App](#function-testing)
-
-[<span class="underline">:grey_question: OPTIONAL - Create Development Environment Machine</span>](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/developer-machine/developer-machine.md)
 
 [<span class="underline">:grey_question: OPTIONAL - FaaS and Developer Cloud Service</span>](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/serverless/devcs2fn.md) 
 
@@ -227,7 +228,7 @@ This concludes the list of OCI tenancy parameters you will require to run next s
 - Cloud Events
 
 ## VCN - Virtual Cloud Network Creation
-If you have created previously a VCN in your compartment, you can use it instead of create a new want, but if you don't have any VNC created, please follow next steps:
+If you have created previously a VCN in your compartment, you can use it instead of create a new one, but if you don't have any VCN created, please follow next steps:
 
 Go to Core Infrastructure -> Networking in the main menu and click in Virtual Cloud Networks.
 
@@ -262,6 +263,9 @@ You should see a creation process window. It takes a few second to create the ne
 You new vnc should be created. You can check vnc subnets (2 networks: public and private), route tablets, internet gateway and so. You can click on Security List to check available open ports for example.
 
 ![](./images/vnc-create07.PNG)
+
+### Virtual Developer cloud Machine
+After VNC creation would be a good time to create your [developer cloud machine](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/devmachine-marketplace/devmachine-marketplace.md) if don't have one  with the appropiate software [requisites](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/developer-machine/developer-machine.md).
 
 ## Object Storage Creation
 Once you created a VNC, you will need an Object Storage element to upload discount campaign json files. Let's create an Object Storage Bucket following next steps:
@@ -391,7 +395,7 @@ CREATE TABLE "MICROSERVICE"."CAMPAIGN" (
 );
 ```
 
-After table created, select MICROSERVICE, Tables and Click on Campaign Table to review the table records.
+After table created, select MICROSERVICE, Tables and Click on Campaign Table to review the table records. If you don't see MICROSERVICE please refresh your browser.
 
 ![](./images/ATP-configure-schema03.PNG)
 
@@ -417,13 +421,14 @@ BEGIN
     COMMIT;
 END;
 ```
-Sign out SQL Developer web as ADMIN user and Sign in again as MICROSERVICE user. To do that you must change the HTML  SQL Developer web URL from admin to <schema_name> [atp]:
+Sign out SQL Developer web as ADMIN user and Sign in again as MICROSERVICE user. To do that you must change the HTML  SQL Developer web URL from admin to <schema_name> [**atp**]:
+From
 ```html
-https://<your-ATP-Instance>.adb.eu-frankfurt-1.oraclecloudapps.com/ords/admin/_sdw/?nav=worksheet 
+https://<your-ATP-Instance>.adb.<your_region>.oraclecloudapps.com/ords/admin/_sdw/?nav=worksheet 
 ```
 To
 ```html
-https://<your-ATP-instance>.adb.eu-frankfurt-1.oraclecloudapps.com/ords/atp/_sdw/?nav=worksheet
+https://<your-ATP-instance>.adb.<your_region>.oraclecloudapps.com/ords/atp/_sdw/?nav=worksheet
 ```
 Now you must write MICROSERVICE as username and the password [AAZZ__welcomedevops123] that you write when you created the user MICROSERVICE before. Then continue creating the ORDS privilages and credential with MICROSERVICE user:
 
@@ -481,7 +486,7 @@ FROM user_ords_clients;
 
 Note client_id and client_secrect fields, because you will use them later in the LAB. They are necessary to configure the serverless Functions ATP ORDS access.
 
-Change the timestamp and date formats.
+Change the timestamp and date formats. Please run this two sentences clicking in the second play icon (the icon with a page and play icon)
 ```sql
 alter session set nls_timestamp_tz_format='DD/MM/YYYY HH24:MI:SS.FF6 TZR';
 alter session set nls_date_format='DD/MM/YYYY';
@@ -688,12 +693,12 @@ Select your serverless app [gigis-serverless-hol]
 
 Select Getting Started TAB. 
 
-![](./images/faas-create-function01.PNG)
+![](./images/fn-discount-cloud-events/faas-create-function01.PNG)
 
 ### Fn context
 Before you create the new 3 functions you must follow steps **from 3 to 5** of Geeting Started guide to create your serverless fn context as the steps are unique for your tenancy (they are set with your appropiate information).
 
-![](./images/faas-create-function01b.PNG)
+![](./images/fn-discount-cloud-events/faas-create-function01b.PNG)
 
 * Create a context for your compartment and select it for use.
 ```sh
@@ -705,19 +710,19 @@ fn use context <YOUR-COMPARTMENT>
 fn update context [YOUR-COMPARTMENT-OCID]
 fn update context api-url https://functions.[your-region].oraclecloud.com
 ```
-* Update the context with the location of the OCI Registry you want to use
+* Update the context with the location of the OCI Registry you want to use. The [OCIR-REPO] name could be what ever you want and the fn deploy will create the repo if the repo doesn't exists.
 ```sh
 fn update context registry [YOUR-OCIR-REGION].ocir.io/[YOUR-TENANCY-NAMESPACE]/[YOUR-OCIR-REPO]
 ```
 
-![](./images/faas-create-function02.PNG)
+![](./images/fn-discount-cloud-events/faas-create-function02.PNG)
 
 Verify your current used context and OCIR repo - marked with (*):
 
 ```sh
 fn list context
 ```
-![](./images/faas-create-function02b.PNG)
+![](./images/fn-discount-cloud-events/faas-create-function02b.PNG)
 
 ## Create Fn Serverless Functions
 Once you create your new fn context, you can continue creating your three serverless functions. For educational purposes you will change the code created with ```fn init``` commands instead of clone them from a git repository.
@@ -737,7 +742,7 @@ fn init --runtime java fn_discount_upload
 fn init --runtime java fn_discount_cloud_events
 fn init --runtime java fn_discount_campaign
 ```
-![](./images/faas-create-function03.PNG)
+![](./images/fn-discount-cloud-events/faas-create-function03.PNG)
 
 Optional:
 ```

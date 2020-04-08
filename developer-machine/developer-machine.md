@@ -84,3 +84,15 @@ Decline to generate a new RSA key pair, copy your private key previously provide
 /home/holouser/.oci
 ```
 ![](./images/image80.png)
+
+You can check you oci config running the next command.
+
+```sh
+oci os ns get
+```
+This command will return your tenant objectstorage namespace in json format as:
+```json
+{
+  "data": "wedoinfra"
+}
+```

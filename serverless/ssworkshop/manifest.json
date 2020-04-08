@@ -52,7 +52,7 @@
             "title": "Lab 3: Gigi's Pizza Serverless Configuration",
             "description": "Setup your gigi's pizza app based on microservices and multitenant & multimodal Oracle database",
             "publisheddate": "04/07/2020",
-            "filename": "../serverless-hol/gigis-serverless-HOL.md"
+            "filename": "../serverless-hol/gigisserverlessHOL.md"
         },
         {
             "title": "Lab 4: Gigi's Pizza Serverless Discount Upload",

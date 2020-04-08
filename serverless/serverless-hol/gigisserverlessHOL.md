@@ -714,11 +714,10 @@ fn init --runtime java fn_discount_upload
 fn init --runtime java fn_discount_cloud_events
 fn init --runtime java fn_discount_campaign
 ```
-![](./images/fn-discount-cloud-events/faas-create-function03.PNG)
+![](./images/faas-create-function03.PNG)
 
 Optional:
 ```
 fn init --runtime java fn_discount_campaign_pool
 ```
-
 Then you must modify each function with the appropiate code in the next labs.

@@ -79,13 +79,13 @@
             "filename": "../serverless-fn-discount-campaign/fn_pizza_discount_campaign.md"
         },
         {
-            "title": "Lab 8: Gigi's Pizza Serverless Discount Upload",
+            "title": "OPTIONAL Lab: Gigi's Pizza Serverless Discount Upload",
             "description": "Setup your gigi's pizza discount campaign serverless app with Oracle Autonomous database",
             "publisheddate": "04/07/2020",
             "filename": "../serverless-fn-discount-campaign-pool/fn_pizza_discount_campaign_pool.md"
         },
         {
-            "title": "Lab 9: Gigi's Pizza Serverless Test",
+            "title": "Lab 9: Gigi's Pizza Serverless Testing",
             "description": "Setup your gigi's pizza discount campaign serverless app with Oracle Autonomous database",
             "publisheddate": "04/07/2020",
             "filename": "../serverless-function-testing/funtion_testing.md"

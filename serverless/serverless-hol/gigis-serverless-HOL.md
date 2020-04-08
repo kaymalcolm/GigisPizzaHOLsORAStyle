@@ -688,12 +688,12 @@ Select your serverless app [gigis-serverless-hol]
 
 Select Getting Started TAB. 
 
-![](../serverless-fn-discount-cloud-events/images/faas-create-function01.PNG)
+![](../serverless-fn-discount-campaign-cloud-events/images/faas-create-function01.PNG)
 
 ### Fn context
 Before you create the new 3 functions you must follow steps **from 3 to 5** of Geeting Started guide to create your serverless fn context as the steps are unique for your tenancy (they are set with your appropiate information).
 
-![](../serverless-fn-discount-cloud-events/images/faas-create-function01b.PNG)
+![](../serverless-fn-discount-campaign-cloud-events/images/faas-create-function01b.PNG)
 
 * Create a context for your compartment and select it for use.
 ```sh
@@ -710,14 +710,14 @@ fn update context api-url https://functions.[your-region].oraclecloud.com
 fn update context registry [YOUR-OCIR-REGION].ocir.io/[YOUR-TENANCY-NAMESPACE]/[YOUR-OCIR-REPO]
 ```
 
-![](../serverless-fn-discount-cloud-events/images/faas-create-function02.PNG)
+![](../serverless-fn-discount-campaign-cloud-events/images/faas-create-function02.PNG)
 
 Verify your current used context and OCIR repo - marked with (*):
 
 ```sh
 fn list context
 ```
-![](../serverless-fn-discount-cloud-events/images/faas-create-function02b.PNG)
+![](../serverless-fn-discount-campaign-cloud-events/images/faas-create-function02b.PNG)
 
 ## Create Fn Serverless Functions
 Once you create your new fn context, you can continue creating your three serverless functions. For educational purposes you will change the code created with ```fn init``` commands instead of clone them from a git repository.
@@ -737,7 +737,7 @@ fn init --runtime java fn_discount_upload
 fn init --runtime java fn_discount_cloud_events
 fn init --runtime java fn_discount_campaign
 ```
-![](../serverless-fn-discount-cloud-events/images/faas-create-function03.PNG)
+![](../serverless-fn-discount-campaign-cloud-events/images/faas-create-function03.PNG)
 
 Optional:
 ```

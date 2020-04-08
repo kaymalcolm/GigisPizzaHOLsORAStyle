@@ -1,6 +1,5 @@
-[![](./images/image1.png)](https://www.oracle.com/code-one/)
-
 # Gigi's Discount Campaigns - Serverless HOL
+[![](./images/image1.png)](https://www.oracle.com/code-one/)
 This HOL is based in a Demo developed by Spain Presales Tech Team as part of an innovation initiative to approach Oracle Cloud Solutions by providing practical examples that could be “touched” and easily understood.
 
 Demo is known as Gigi’s Pizza. This Use Case is focused in serverless (fn) and Autonomous DataBase. In Gigi's Pizza demo we have three microservices coded in different languages like nodejs and of course Java (Helidon framework). This three microservices are part of a delivery pizza app, one microservice controls the orders, other one controls the pizza delivery and the last one controls the accounting. 
@@ -20,7 +19,7 @@ This serverless Hands On Lab includes:
 * CloudEvents to trigger this json files and upload them to the ATP.
 * Oracle managed Functions (serverless fn based) to upload data, get data and send it to microservices.
 
-# In this Hands on Lab
+## In this Hands on Lab
 
 All HOL was written in English and all the screenshots are in English Language. We recomend you that select English as your default language in Oracle Cloud. Select the Earth Icon at the top right (near your profile icon) and change the language to English.
 
@@ -63,35 +62,7 @@ If you attend our previous HOL about Gigi's pizza, you had created a Cloud Accou
 
 (OPTIONAL) All the code project could be stored in a project and GIT repos in Developer Cloud Service. if you attended our previous LAB about microservices (gigi's pizza) before, you should have a DevCS instance with the Gigi's project copied on it. You can use that DevCS instance and the same Gigi's project to do this optional part.
 
-## Table of contents
-
-1. [Setting up an Oracle Cloud Account](#setting-up-an-oracle-cloud-account)
-2. [Getting key config data from Oracle Cloud Tenancy](#getting-key-config-data-from-oracle-cloud-tenancy)
-3. [How to get OCI tenancy config data](#how-to-get-oci-tenancy-config-data)
-4. [Create OCI Resources](#create-oci-resources)
-   - 4.1.[VCN - Virtual Cloud Network Creation](#vcn---virtual-cloud-network-creation)
-	 - 4.1.1 [Create Developer Machine](#virtual-developer-cloud-machine)
-   - 4.2 [Object Storage Creation](#object-storage-creation)
-   - 4.3 [ATP - Autonomous Database Creation](#atp---autonomous-database-creation)
-	 - 4.3.1. [Get ATP Wallet file](#get-atp-wallet-file)
-	 - 4.3.2. [ATP Service Console](#atp-service-console)
-	 - 4.3.3. [ATP Schema and Tables Creation](#atp-schema-and-tables-creation)
-	 - 4.3.4. [ATP ORDS Configuration](#atp-ords-configuration)
-	 - 4.3.5. [ATP Enable ORDS Table](#atp-enable-ords-table)
-   - 4.4. [OCI IAM FaaS Policy](#oci-iam-faas-policy)
-   - 4.5. [Oracle FaaS Serverless Application Creation](#oracle-faas-serverless-application-creation)
-	  - 4.5.1. [Function Environment Variables](#function-environment-variables)
-	  - 4.5.2. [Functions Logging](#functions-logging)
-5. [Serverless Functions Coding](#serverless-functions-coding)
-   - 5.1. [Creating the Serverless Functions](#creating-the-serverless-functions)
-   	  - 5.1.1. [Fn Context](#fn-context)
-	  - 5.1.2. [Create Fn Serverless Functions](#create-fn-serverless-functions)
-6. [Event Service - Cloud Event Creation](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/serverless/event-service.md)
-7. [Execute Serverless App](#function-testing)
-
-[<span class="underline">:grey_question: OPTIONAL - FaaS and Developer Cloud Service</span>](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/serverless/devcs2fn.md) 
-
-# **Setting up an Oracle Cloud Account**
+## Setting up an Oracle Cloud Account
 
 As an attendee to OOW/CodeOne 19 you have been provided with access to a free trial account part of Free Oracle Cloud Program with 500$ / 30 days trial. This trial is associated with the email address you used to register to event.
 
@@ -133,7 +104,7 @@ And you will be directed to initial Oracle Cloud Infrastructure Dashboard (refer
 
 ![](./images/image12.png)
 
-# **Getting key config data from Oracle Cloud Tenancy**
+## Getting key config data from Oracle Cloud Tenancy
 
 Now before we are able to configure a Developer Cloud Service Instance, let’s gather some key info about our OCI tenancy that will be required throughout the whole lab. So we recommend you to create a txt file where you store this basic info you will be required to use several times during this lab:
 
@@ -146,7 +117,7 @@ Now before we are able to configure a Developer Cloud Service Instance, let’s 
   - Compartment OCID
   - Object Storage Namespace
 
-## How to get OCI tenancy config data
+### How to get OCI tenancy config data
 
 In Oracle Cloud Infrastructure interface menu, go to Administration-\>Tenancy Details:
 
@@ -219,7 +190,7 @@ And click on copy link to copy the Compartment OCID. Don’t forget to make a no
 
 This concludes the list of OCI tenancy parameters you will require to run next section.
 
-# Create OCI Resources
+## Create OCI Resources
 - VCN - Virtual Cloud Network
 - Object Storage
 - ATP - Autonomous Transaction Processing
@@ -750,12 +721,4 @@ Optional:
 fn init --runtime java fn_discount_campaign_pool
 ```
 
-Then you must modify each function with the appropiate code (you can ```CTRL + mouse click``` over the links to open new browser tabs):
-
-1. [fn_discount_upload](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/serverless/fn_pizza_discount_upload.md)
-2. [fn_discount_cloud_events](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/serverless/fn_pizza_discount_cloud_events.md)
-3. [fn_discount_campaign](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/serverless/fn_pizza_discount_campaign.md)
-
-**[Optional]** [fn_discount_campaign_pool](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/serverless/fn_pizza_discount_campaign_pool.md)
-# Function Testing
-Now that you create and configure the entire project, you [could test the serverless app and serverless functions](https://github.com/oraclespainpresales/GigisPizzaHOL/blob/master/serverless/funtion_testing.md).
+Then you must modify each function with the appropiate code in the next labs.

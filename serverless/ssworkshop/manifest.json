@@ -7,14 +7,30 @@
             "publisheddate": "04/07/2020",
             "contentid": "12nnnn",
             "filename": "../intro/intro.md"
+        },        
+        {           
+            "title": "Developer Machine from marketplace",
+            "description": "Developer machine for the labs if you don't have one",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "04/07/2020",
+            "contentid": "12nnnn",
+            "filename": "https://raw.githubusercontent.com/oraclespainpresales/GigisPizzaHOLsORAStyle/master/devmachine-marketplace/devmachine-marketplace.md"
         },
         {           
-            "title": "Test: Gigi's Pizza Hands on Labs B",
+            "title": "Developer Machine Prerequisites",
+            "description": "Developer machine requisites",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "04/07/2020",
+            "contentid": "12nnnn",
+            "filename": "https://raw.githubusercontent.com/oraclespainpresales/GigisPizzaHOLsORAStyle/master/developer-machine/developer-machine.md"
+        },
+        {           
+            "title": "Notes for the Labs",
             "description": "About the Gigi's pizza HOLs",
             "partnumber": "Ennnnn_01",
             "publisheddate": "04/07/2020",
             "contentid": "12nnnn",
-            "filename": "../serverless-hol/gigis-serverless-HOL.md"
+            "filename": "../serverless-hol/notes.md"
         },
         {         
             "title": "Lab 1: Login to Oracle Cloud",

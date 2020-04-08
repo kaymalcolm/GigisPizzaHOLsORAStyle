@@ -486,7 +486,8 @@ FROM user_ords_clients;
 
 Note client_id and client_secrect fields, because you will use them later in the LAB. They are necessary to configure the serverless Functions ATP ORDS access.
 
-Change the timestamp and date formats. Please run this two sentences clicking in the second play icon (the icon with a page and play icon)
+Change the timestamp and date formats. Please run this two sentences. Please click in the second play icon.
+![](./images/ATP-configure-icons01.PNG)
 ```sql
 alter session set nls_timestamp_tz_format='DD/MM/YYYY HH24:MI:SS.FF6 TZR';
 alter session set nls_date_format='DD/MM/YYYY';
